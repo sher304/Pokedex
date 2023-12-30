@@ -39,6 +39,11 @@
 		D0462CD12B3F94D300E7B866 /* PokemonsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CD02B3F94D300E7B866 /* PokemonsGroup.swift */; };
 		D0462CD32B3F951F00E7B866 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CD22B3F951F00E7B866 /* Pokemon.swift */; };
 		D0462CD52B3F956600E7B866 /* DecodeEncodeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CD42B3F956600E7B866 /* DecodeEncodeHelpers.swift */; };
+		D0462CD92B3F98F400E7B866 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0462CD82B3F98F400E7B866 /* SnapKit */; };
+		D0462CDC2B3F9A8C00E7B866 /* CollectionSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CDB2B3F9A8C00E7B866 /* CollectionSafe.swift */; };
+		D0462CDF2B3F9B0000E7B866 /* UITableView+CollectionViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CDE2B3F9B0000E7B866 /* UITableView+CollectionViewRegister.swift */; };
+		D0462CE12B3F9CA100E7B866 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0462CE02B3F9CA100E7B866 /* NSObject+ClassName.swift */; };
+		D0462CE42B3F9ECF00E7B866 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0462CE32B3F9ECF00E7B866 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +82,9 @@
 		D0462CD02B3F94D300E7B866 /* PokemonsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonsGroup.swift; sourceTree = "<group>"; };
 		D0462CD22B3F951F00E7B866 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		D0462CD42B3F956600E7B866 /* DecodeEncodeHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeEncodeHelpers.swift; sourceTree = "<group>"; };
+		D0462CDB2B3F9A8C00E7B866 /* CollectionSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSafe.swift; sourceTree = "<group>"; };
+		D0462CDE2B3F9B0000E7B866 /* UITableView+CollectionViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+CollectionViewRegister.swift"; sourceTree = "<group>"; };
+		D0462CE02B3F9CA100E7B866 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0462CE42B3F9ECF00E7B866 /* Kingfisher in Frameworks */,
+				D0462CD92B3F98F400E7B866 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +213,7 @@
 		D0462C9C2B34F20500E7B866 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D0462CC12B3731EE00E7B866 /* CellConfigurator */,
-				D0462C9A2B34F19600E7B866 /* ViewOutput.swift */,
-				D0462CBF2B358C7B00E7B866 /* CommonCollectionLayout.swift */,
+				D0462CDA2B3F9A7C00E7B866 /* UiKit */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -306,6 +314,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D0462CDA2B3F9A7C00E7B866 /* UiKit */ = {
+			isa = PBXGroup;
+			children = (
+				D0462CC12B3731EE00E7B866 /* CellConfigurator */,
+				D0462C9A2B34F19600E7B866 /* ViewOutput.swift */,
+				D0462CBF2B358C7B00E7B866 /* CommonCollectionLayout.swift */,
+				D0462CDB2B3F9A8C00E7B866 /* CollectionSafe.swift */,
+				D0462CDE2B3F9B0000E7B866 /* UITableView+CollectionViewRegister.swift */,
+				D0462CE02B3F9CA100E7B866 /* NSObject+ClassName.swift */,
+			);
+			path = UiKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -322,6 +343,10 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				D0462CD82B3F98F400E7B866 /* SnapKit */,
+				D0462CE32B3F9ECF00E7B866 /* Kingfisher */,
+			);
 			productName = Pokedex;
 			productReference = D0462C502B34E57200E7B866 /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -352,7 +377,8 @@
 			);
 			mainGroup = D0462C472B34E57200E7B866;
 			packageReferences = (
-				D0462CD62B3F982000E7B866 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D0462CD72B3F98F400E7B866 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D0462CE22B3F9ECF00E7B866 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D0462C512B34E57200E7B866 /* Products */;
 			projectDirPath = "";
@@ -407,8 +433,11 @@
 				D0462CD32B3F951F00E7B866 /* Pokemon.swift in Sources */,
 				D0462CBB2B34FB0000E7B866 /* NetworkService.swift in Sources */,
 				D0462CB52B34F86E00E7B866 /* EndpointProtocol.swift in Sources */,
+				D0462CDF2B3F9B0000E7B866 /* UITableView+CollectionViewRegister.swift in Sources */,
+				D0462CE12B3F9CA100E7B866 /* NSObject+ClassName.swift in Sources */,
 				D0462CA02B34F28100E7B866 /* PokemonService.swift in Sources */,
 				D0462CAC2B34F67600E7B866 /* APIError.swift in Sources */,
+				D0462CDC2B3F9A8C00E7B866 /* CollectionSafe.swift in Sources */,
 				D0462CCF2B3F91C600E7B866 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,15 +653,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D0462CD62B3F982000E7B866 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		D0462CD72B3F98F400E7B866 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		D0462CE22B3F9ECF00E7B866 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0462CD82B3F98F400E7B866 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0462CD72B3F98F400E7B866 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		D0462CE32B3F9ECF00E7B866 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0462CE22B3F9ECF00E7B866 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0462C482B34E57200E7B866 /* Project object */;
 }

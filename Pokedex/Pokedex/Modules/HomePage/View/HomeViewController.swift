@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol HomeViewInput: AnyObject {
     func updateViewModel(viewModel: HomeViewModel)
@@ -23,19 +24,23 @@ final class HomeViewController: UIViewController {
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.delegate = self
         collectionV.dataSource = self
+        collectionV.register(cellTypes: [PokemonCollectionViewCell.self])
         return collectionV
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
         presenter?.viewDidLoad()
+        setupConstraints()
     }
     
     // MARK: Draw
     private func setupConstraints() {
         view.addSubview(collectionView)
-        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }
 
@@ -56,7 +61,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let rows = viewModel?.rows[indexPath.row] else {
+        guard let rows = viewModel?.rows[safe: indexPath.row] else {
             assertionFailure("Failuer to configure cell")
             return UICollectionViewCell()
         }

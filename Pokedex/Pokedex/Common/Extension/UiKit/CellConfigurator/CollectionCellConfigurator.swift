@@ -7,8 +7,6 @@
 
 import UIKit
 
-// reason: long generic
-// swiftlint:disable:next line_length
 struct CollectionCellConfigurator<CellType: Configurable, Model>: CollectionCellConfiguratorProtocol where CellType.Model == Model, CellType: UICollectionViewCell {
 
     // MARK: - Properties

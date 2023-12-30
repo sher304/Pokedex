@@ -42,6 +42,6 @@ extension HomePresenter: HomeViewOutput {
 extension HomePresenter: HomeInteractorOutput {
     func getPokemon(pokemon: PokemonsGroup) {
         let viewModel = dataProvider.createViewModel(pokemons: [pokemon])
-        
+        view?.updateViewModel(viewModel: viewModel)
     }
 }

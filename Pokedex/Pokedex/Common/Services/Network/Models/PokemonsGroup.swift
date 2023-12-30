@@ -25,6 +25,7 @@ struct PokemonsGroup: Codable {
     let stats: [Stat]?
     let types: [TypeElement]?
     let weight: Int?
+    let sprites: Sprites?
 
     enum CodingKeys: String, CodingKey {
         case abilities
@@ -35,7 +36,7 @@ struct PokemonsGroup: Codable {
         case id
         case isDefault = "is_default"
         case locationAreaEncounters = "location_area_encounters"
-        case moves, name, order
+        case moves, name, order, sprites
         case weight, species, stats, types
     }
 }
