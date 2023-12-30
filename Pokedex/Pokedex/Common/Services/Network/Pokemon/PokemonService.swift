@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol PokemonService {
-    func getPokemon(name: String, completion: @escaping (NetworkResult<Pokemon?>) -> Void)
+    func getPokemon(name: String, completion: @escaping (NetworkResult<PokemonsGroup?>) -> Void)
 }
 
 final class PokemonServiceImpl: PokemonService {
@@ -20,7 +20,7 @@ final class PokemonServiceImpl: PokemonService {
         self.networkService = networkService
     }
     
-    func getPokemon(name: String, completion: @escaping (NetworkResult<Pokemon?>) -> Void) {
+    func getPokemon(name: String, completion: @escaping (NetworkResult<PokemonsGroup?>) -> Void) {
         let endoint = PokemonEndPoint.getPokemon(name: name)
         networkService.request(endpoint: endoint, completion: completion)
     }

@@ -11,7 +11,8 @@ final class HomeAssembly {
     
     static func assemblyModule() -> UIViewController {
         let view = HomeViewController()
-        let presenter = HomePresenter()
+        let homedataProvider = HomeDataProvider()
+        let presenter = HomePresenter(dataProvider: homedataProvider)
         let router = HomeRouter()
         let pokemonService = PokemonServiceImpl(networkService: NetworkService<PokemonEndPoint>())
         let interactor = HomeInteractor(PokemonService: pokemonService)
