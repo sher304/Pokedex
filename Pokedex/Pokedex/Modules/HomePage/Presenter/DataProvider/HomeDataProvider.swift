@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeDataProviderInput {
-    func createViewModel(pokemons: [PokemonsGroup]) -> HomeViewModel
+    func createViewModel(pokemons: [Species]) -> HomeViewModel
 }
 
 
@@ -20,17 +20,16 @@ final class HomeDataProvider: HomeDataProviderInput {
     
     
     // MARK: Methods
-    func createViewModel(pokemons: [PokemonsGroup]) -> HomeViewModel {
+    func createViewModel(pokemons: [Species]) -> HomeViewModel {
         var rows: [HomeViewModel.Row] = []
         
         pokemons.forEach {
             rows.append(
                 .pokemons(configurator: PokemonConfigurator(
                     item: PokemonCollectionViewCell.Model(
-                                        pokemonImage: $0.sprites?.backDefault,
-                                        pokemonName: $0.name
+                        pokemonImage: $0.url,
+                        pokemonName: $0.name
                     ))))}
-        
         return HomeViewModel(rows: rows)
     }
 }

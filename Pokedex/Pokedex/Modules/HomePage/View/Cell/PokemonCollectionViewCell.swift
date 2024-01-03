@@ -24,6 +24,7 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
@@ -32,6 +33,7 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     // MARK: Draw
     private func setupConstraints() {
@@ -53,7 +55,6 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
 
 // MARK: Configurable
 extension PokemonCollectionViewCell: Configurable {
-    
     struct Model {
         let pokemonImage: String?
         let pokemonName: String?

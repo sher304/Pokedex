@@ -27,12 +27,15 @@ final class HomeViewController: UIViewController {
         collectionV.register(cellTypes: [PokemonCollectionViewCell.self])
         return collectionV
     }()
+
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
         setupConstraints()
     }
+    
     
     // MARK: Draw
     private func setupConstraints() {
@@ -69,5 +72,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: rows.rauseId, for: indexPath)
         rows.configurator.configure(cell: cell)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard let viewModel = self.viewModel else { return }
+        if indexPath.row == (viewModel.rows.count ?? 0) - 1 {
+            presenter?.postScrollEnded()
+        }
     }
 }
