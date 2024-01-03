@@ -27,7 +27,6 @@ final class HomeDataProvider: HomeDataProviderInput {
             rows.append(
                 .pokemons(configurator: PokemonConfigurator(
                     item: PokemonCollectionViewCell.Model(
-                        pokemonImage: $0.url,
                         pokemonName: $0.name
                     ))))}
         return HomeViewModel(rows: rows)

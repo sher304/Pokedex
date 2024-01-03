@@ -19,12 +19,16 @@ final class HomeViewController: UIViewController {
     
     // MARK: Views
     private lazy var collectionView: UICollectionView = {
-        let size = CGSize(width: 200, height: 200)
-        let layout = CommonCollectionFlowLayout(itemSize: size, lineSpacing: 8, interitemSpacing: 5, scrollDirection: .vertical)
+        let itemSize = CGSize(width: 80, height: 80)
+        let layout = CommonCollectionFlowLayout(itemSize: itemSize,
+                                                lineSpacing: 10,
+                                                interitemSpacing: 5,
+                                                scrollDirection: .vertical)
         let collectionV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionV.delegate = self
         collectionV.dataSource = self
         collectionV.register(cellTypes: [PokemonCollectionViewCell.self])
+        collectionV.backgroundColor = .white
         return collectionV
     }()
 
@@ -77,7 +81,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         guard let viewModel = self.viewModel else { return }
-        if indexPath.row == (viewModel.rows.count ?? 0) - 1 {
+        if indexPath.row == (viewModel.rows.count) - 1 {
             presenter?.postScrollEnded()
         }
     }
