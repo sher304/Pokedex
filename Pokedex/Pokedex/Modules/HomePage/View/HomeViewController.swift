@@ -18,6 +18,15 @@ final class HomeViewController: UIViewController {
     private var viewModel: HomeViewModel?
     
     // MARK: Views
+    private lazy var searchButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.backgroundColor = .orange
+        button.layer.cornerRadius = 20
+        button.layer.masksToBounds = true
+        return button
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let itemSize = CGSize(width: 80, height: 80)
         let layout = CommonCollectionFlowLayout(itemSize: itemSize,
@@ -36,12 +45,17 @@ final class HomeViewController: UIViewController {
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavbar()
         presenter?.viewDidLoad()
         setupConstraints()
     }
     
     
     // MARK: Draw
+    private func setupNavbar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchButton)
+    }
+    
     private func setupConstraints() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
