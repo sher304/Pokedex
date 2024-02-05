@@ -10,5 +10,4 @@ import Foundation
 
 struct API {
     static let getPokemonByName = "pokemon/"
-    
 }

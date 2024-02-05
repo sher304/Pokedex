@@ -11,19 +11,26 @@ import Kingfisher
 final class PokemonCollectionViewCell: UICollectionViewCell {
     
     // MARK: Views
+    private lazy var parentView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private lazy var pokemonImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .orange
-        imageView.layer.cornerRadius = 10
-        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(named: "pokeball")
         return imageView
     }()
     
     private lazy var pokemonName: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byTruncatingMiddle
         return label
     }()
     
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
@@ -33,18 +40,24 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     // MARK: Draw
     private func setupConstraints() {
-        contentView.addSubview(pokemonImage)
+        contentView.addSubview(parentView)
+        parentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.top.equalToSuperview()
+        }
+        
+        parentView.addSubview(pokemonImage)
         pokemonImage.snp.makeConstraints {
-            $0.top.equalTo(20)
-            $0.leading.equalTo(20)
+            $0.top.centerX.equalToSuperview()
             $0.size.equalTo(50)
         }
         
-        contentView.addSubview(pokemonName)
+        parentView.addSubview(pokemonName)
         pokemonName.snp.makeConstraints {
-            $0.top.equalTo(pokemonImage.snp.bottom).offset(10)
+            $0.top.equalTo(pokemonImage.snp.bottom).offset(8)
             $0.centerX.equalTo(pokemonImage)
         }
     }
@@ -53,14 +66,11 @@ final class PokemonCollectionViewCell: UICollectionViewCell {
 
 // MARK: Configurable
 extension PokemonCollectionViewCell: Configurable {
-    
     struct Model {
-        let pokemonImage: String?
         let pokemonName: String?
     }
     
     func configure(with model: Model) {
-        self.pokemonImage.kf.setImage(with: URL(string: model.pokemonImage ?? ""))
         self.pokemonName.text = model.pokemonName?.capitalized
     }
 }

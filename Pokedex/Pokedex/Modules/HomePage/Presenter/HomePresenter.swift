@@ -8,11 +8,11 @@
 import Foundation
 
 protocol HomeViewOutput: ViewOutput {
-    
+    func postScrollEnded()
 }
 
 protocol HomeInteractorOutput {
-    func getPokemon(pokemon: PokemonsGroup)
+    func getPokemons(pokemons: PokemonsGroup)
 }
 
 final class HomePresenter {
@@ -20,6 +20,8 @@ final class HomePresenter {
     weak var view: HomeViewInput?
     var router: HomeRouterInput?
     var interactor: HomeInteractorInput?
+    private var page: Int = 0
+    private var pokemonsGroup: [Species] = []
     
     private var dataProvider: HomeDataProviderInput
     
@@ -33,15 +35,21 @@ final class HomePresenter {
 // MARK: HomeViewOutput {
 extension HomePresenter: HomeViewOutput {
     func viewDidLoad() {
-        interactor?.getPokemon(name: "charmander")
+        interactor?.getPokemons(page: self.page.description)
+    }
+    
+    func postScrollEnded() {
+        page += 20
+        interactor?.getPokemons(page: page.description)
     }
 }
 
 
 // MARK: HomeInteractorOutput {
 extension HomePresenter: HomeInteractorOutput {
-    func getPokemon(pokemon: PokemonsGroup) {
-        let viewModel = dataProvider.createViewModel(pokemons: [pokemon])
+    func getPokemons(pokemons: PokemonsGroup) {
+        self.pokemonsGroup.append(contentsOf: pokemons.results)
+        let viewModel = dataProvider.createViewModel(pokemons: self.pokemonsGroup)
         view?.updateViewModel(viewModel: viewModel)
     }
 }
