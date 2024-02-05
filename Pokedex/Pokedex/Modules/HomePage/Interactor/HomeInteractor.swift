@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeInteractorInput {
-    func getPokemon(name: String)
+    func getPokemons(page: String?)
 }
 
 final class HomeInteractor {
@@ -25,12 +25,12 @@ final class HomeInteractor {
 
 // MARK: HomeInteractorInput
 extension HomeInteractor: HomeInteractorInput {
-    func getPokemon(name: String) {
-        PokemonService.getPokemon(name: name) { [weak self] result in
+    func getPokemons(page: String?) {
+        PokemonService.getPokemons(page: page) { [weak self] result in
             switch result {
             case .success(let model):
                 guard let data = model else { return }
-                self?.presenter?.getPokemon(pokemon: data)
+                self?.presenter?.getPokemons(pokemons: data)
             case .failure(let error):
                 print(error.localizedDescription)
             }
